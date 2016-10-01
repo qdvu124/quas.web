@@ -2,6 +2,7 @@ import React from 'react';
 import SearchBar from './search_bar';
 import BookForm from './book_form';
 import BookList from '../containers/book_list';
+import BookDetail from '../containers/book_detail';
 
 class TabBody extends React.Component {
 
@@ -13,9 +14,10 @@ class TabBody extends React.Component {
 
     renderList () {
         return (
-            <div>
+            <div className="col-md-12">
                 <SearchBar />
                 <BookList />
+                <BookDetail />
             </div>
         );
     }
