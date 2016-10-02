@@ -1,12 +1,11 @@
 require('isomorphic-fetch');
+
 require('es6-promise');
-import * as api from '../constants/API'
 
 export default function () {
-    
-    return [
-    { title: 'quas' }, 
-    { title: 'wex' }, 
+  return [
+    { title: 'quas' },
+    { title: 'wex' },
     { title: 'exort' }];
 
     //     fetch(api.API,
@@ -21,6 +20,4 @@ export default function () {
     //     }).then( book => {
     //         return book;
     //     });
-
-
 }
