@@ -1,0 +1,29 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["airbnb"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "jsx": true,
+      "modules": true
+    },
+    "ecmaVersion": 7,
+    "sourceType": "module"
+  },
+
+  "plugins": ["import"],
+
+  "rules": {
+    "import/no-unresolved": [0],
+    "global-require": 0,
+    "no-param-reassign": 0
+  },
+
+  "arrow-body-style": ["error", "always"],
+
+  "globals": { "fetch": false },
+
+  "ecmaFeatures": {
+    "jsx": true
+  }
+}
