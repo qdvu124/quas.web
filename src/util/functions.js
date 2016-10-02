@@ -3,7 +3,7 @@ require('isomorphic-fetch');
 function getHeader() {
   return {
     'Content-Type': 'application/',
-    Authorization: '',
+    'Authorization': '',
   };
 }
 
