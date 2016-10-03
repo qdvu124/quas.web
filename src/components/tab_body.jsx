@@ -33,5 +33,5 @@ export default class TabBody extends React.Component {
 }
 
 TabBody.propTypes = {
- // currentTab: React.propTypes.text,
+  currentTab: React.PropTypes.string,
 };

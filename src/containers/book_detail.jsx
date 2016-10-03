@@ -11,4 +11,8 @@ function mapStateToProp(state) {
   };
 }
 
+BookDetail.propTypes = {
+  activeBook: React.PropTypes.func,
+};
+
 export default connect(mapStateToProp)(BookDetail);

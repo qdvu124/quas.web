@@ -11,10 +11,10 @@ export default class App extends React.Component {
     return (
       <div>
         <ul >
-          <button onClick={() => this.setState({ currentTab: 'list' })}>Menu 1</button>
-          <button onClick={() => this.setState({ currentTab: 'post' })}>Menu 2</button>
+          <button onClick={ () => this.setState({ currentTab: 'list' }) }>Menu 1</button>
+          <button onClick={ () => this.setState({ currentTab: 'post' }) }>Menu 2</button>
         </ul>
-        <TabBody currentTab={this.state.currentTab} />
+        <TabBody currentTab={ this.state.currentTab } />
       </div>
         );
   }

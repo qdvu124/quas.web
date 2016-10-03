@@ -16,8 +16,8 @@ export default class SearchBar extends React.Component {
     return (
       <div className="search-bar">
         <input
-          value={this.state.term}
-          onChange={event => this.onInputChange(event.target.value)}
+          value={ this.state.term }
+          onChange={ event => this.onInputChange(event.target.value) }
           placeholder="Enter your search here"
         />
       </div>
@@ -26,7 +26,7 @@ export default class SearchBar extends React.Component {
 }
 
 SearchBar.propTypes = {
-  // onSearchTermChange: React.propTypes.number,
+  onSearchTermChange: React.PropTypes.func,
 };
 
 
