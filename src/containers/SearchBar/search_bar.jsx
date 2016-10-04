@@ -1,7 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { retrieveBooks } from '../actions/index';
+import { retrieveBooks } from '../../actions/index';
 
 class SearchBar extends React.Component {
   constructor(props) {
