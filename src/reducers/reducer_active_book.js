@@ -1,13 +1,9 @@
 import { SELECT_BOOK } from '../constants/ActionTypes';
 
-export default function (state = {
-  activeBook: null,
-}, action) {
+export default function (state = null, action) {
   switch (action.type) {
     case SELECT_BOOK:
-      return {
-        activeBook: action.payload,
-      };
+      return action.payload;
     default:
       return state;
   }
