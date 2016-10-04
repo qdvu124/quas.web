@@ -1,6 +1,8 @@
 import { SELECT_BOOK } from '../constants/ActionTypes';
 
-export default function (state = null, action) {
+export default function (state = {
+  activeBook: null,
+}, action) {
   switch (action.type) {
     case SELECT_BOOK:
       return {
