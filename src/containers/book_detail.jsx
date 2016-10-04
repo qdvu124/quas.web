@@ -2,12 +2,22 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 function BookDetail(props) {
-  return (<div> {props.activeBook ? props.activeBook.title : 'Select a book'} </div>);
+  if (!props.activeBook) {
+    return <div> Press the fetch button to begin </div>;
+  }
+  return (
+    <div>
+      <div>Book title: {props.activeBook.name}</div>
+      <div>Edition: {props.activeBook.edition} </div>
+      <div>Author: {props.activeBook.author} </div>
+      <div>Publisher: {props.activeBook.publisher} </div>
+    </div>);
 }
 
 function mapStateToProp(state) {
   return {
-    activeBook: state.activeBook,
+    // TODO: Investigate why
+    activeBook: state.activeBook.activeBook,
   };
 }
 

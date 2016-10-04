@@ -6,13 +6,13 @@ import { selectBook } from '../actions/index';
 class BookList extends React.Component {
   renderList() {
     return (
-         this.props.books.books.map((book) => {
+         this.props.books.map((book) => {
            return (
              <li
-               key={ book.id }
+               key={ book._id }
                onClick={ () => this.props.selectBook(book) }
                className="list-group-item"
-             > { book.name }
+             > { book.name ? book.name : 'No name' }
              </li>
            );
          }
@@ -22,15 +22,15 @@ class BookList extends React.Component {
 
   render() {
     return (
-      <ul className="col-md-12"> { this.renderList } </ul>
+      <ul className="col-md-12"> { this.props.books ? this.renderList() : 'Now loading'} </ul>
     );
   }
 }
 
 function mapStateToProps(state) {
-  console.log(state.books);
+  // TODO: Investigate why
   return {
-    books: state.books,
+    books: state.books.books,
   };
 }
 

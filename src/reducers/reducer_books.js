@@ -1,6 +1,8 @@
 import { FETCH_BOOK } from '../constants/ActionTypes';
 
-export default function (state = null, action) {
+export default function (state = {
+  books: [],
+}, action) {
   switch (action.type) {
     case FETCH_BOOK:
       console.log(action.payload);
