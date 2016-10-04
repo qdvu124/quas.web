@@ -20,6 +20,7 @@
     "no-param-reassign": 0,
     "class-methods-use-this": 0,
     "arrow-body-style": 0,
+    "curly": 0,
 
     "react/forbid-prop-types": 0,
     "react/jsx-filename-extension": 0,
@@ -28,7 +29,9 @@
 
   "globals": { 
     "fetch": false,
-    "document": true
+    "document": true,
+    "localstorage": true,
+    "window": true
   },
 
   "ecmaFeatures": {
