@@ -1,12 +1,15 @@
-require('isomorphic-fetch');
+import { FETCH_BOOK } from '../constants/ActionTypes';
 
-require('es6-promise');
-
-export default function () {
-  return [
-    { title: 'quas' },
-    { title: 'wex' },
-    { title: 'exort' }];
+export default function (state = null, action) {
+  switch (action.type) {
+    case FETCH_BOOK:
+      console.log(action.payload);
+      return {
+        books: action.payload,
+      };
+    default:
+      return state;
+  }
 
     //     fetch(api.API,
     //     {
