@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchBar from './search_bar';
+import SearchBar from '../containers/search_bar';
 import BookForm from './book_form';
 import BookList from '../containers/book_list';
 import BookDetail from '../containers/book_detail';
@@ -9,16 +9,17 @@ export default class TabBody extends React.Component {
     return (
       <div className="col-md-12">
         <SearchBar />
-        <BookList />
-        <BookDetail />
+        <br />
+        <BookList className="col-md-12" />
+        <br />
+        <BookDetail className="col-md-12" />
       </div>
      );
   }
 
   renderPost() {
     return (
-      <div>
-        <SearchBar />
+      <div className="col-md-12">
         <BookForm />
       </div>
     );

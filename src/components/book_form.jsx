@@ -1,6 +1,6 @@
 import React from 'react';
 import * as api from '../constants/API';
-import { post } from '../util/functions';
+import { post } from '../util/rest';
 
 require('isomorphic-fetch');
 

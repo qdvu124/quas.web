@@ -10,12 +10,13 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <ul >
-          <button onClick={ () => this.setState({ currentTab: 'list' }) }>Menu 1</button>
-          <button onClick={ () => this.setState({ currentTab: 'post' }) }>Menu 2</button>
-        </ul>
-        <TabBody currentTab={ this.state.currentTab } />
+        <div className="col-md-12">
+          <button onClick={ () => this.setState({ currentTab: 'list' }) }>Search for books</button>
+          <button onClick={ () => this.setState({ currentTab: 'post' }) }>Post new books</button>
+        </div>
+        <br />
+        <TabBody className="col-md-12" currentTab={ this.state.currentTab } />
       </div>
-        );
+   );
   }
 }

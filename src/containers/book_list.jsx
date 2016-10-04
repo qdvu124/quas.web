@@ -6,13 +6,13 @@ import { selectBook } from '../actions/index';
 class BookList extends React.Component {
   renderList() {
     return (
-         this.props.books.map((book) => {
+         this.props.books.books.map((book) => {
            return (
              <li
-               key={ book.title }
+               key={ book.id }
                onClick={ () => this.props.selectBook(book) }
                className="list-group-item"
-             > {book.title}
+             > { book.name }
              </li>
            );
          }
@@ -22,12 +22,13 @@ class BookList extends React.Component {
 
   render() {
     return (
-      <ul> { this.renderList() } </ul>
+      <ul className="col-md-12"> { this.renderList } </ul>
     );
   }
 }
 
 function mapStateToProps(state) {
+  console.log(state.books);
   return {
     books: state.books,
   };
