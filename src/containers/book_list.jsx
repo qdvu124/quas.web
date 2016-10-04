@@ -30,7 +30,7 @@ class BookList extends React.Component {
 function mapStateToProps(state) {
   // TODO: Investigate why
   return {
-    books: state.books.books,
+    books: state.books,
   };
 }
 

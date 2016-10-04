@@ -8,16 +8,16 @@ function BookDetail(props) {
   return (
     <div>
       <div>Book title: {props.activeBook.name}</div>
-      <div>Edition: {props.activeBook.edition} </div>
-      <div>Author: {props.activeBook.author} </div>
-      <div>Publisher: {props.activeBook.publisher} </div>
+      <div>Edition: {props.activeBook.edition}</div>
+      <div>Author: {props.activeBook.author}</div>
+      <div>Publisher: {props.activeBook.publisher}</div>
     </div>);
 }
 
 function mapStateToProp(state) {
   return {
     // TODO: Investigate why
-    activeBook: state.activeBook.activeBook,
+    activeBook: state.activeBook,
   };
 }
 

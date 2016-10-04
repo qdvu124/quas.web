@@ -2,12 +2,13 @@ require('isomorphic-fetch');
 
 export function getHeader() {
   return {
-    'Content-Type': 'application/',
-    'Authorization': '',
+    'Content-Type': 'application/json',
+    Authorization: '',
   };
 }
 
 export function post(api, postBody) {
+  console.log(getHeader());
   return fetch(api, {
     headers: getHeader(),
     method: 'post',
