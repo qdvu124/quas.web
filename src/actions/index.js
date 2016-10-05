@@ -46,19 +46,14 @@ export function retrieveBooks() {
 
 export function dispatchLogin(name, password) {
   return (dispatch) => {
-    console.log({
-      name,
-      password,
-    });
     return fetch(LOGIN_API, {
       headers: getHeader(),
       method: 'post',
-      body: {
+      body: JSON.stringify({
         name,
         password,
-      },
+      }),
     }).then((response) => {
-      console.log(response);
       if (response.status >= 400) {
         throw new Error('Bad response from server');
       }
