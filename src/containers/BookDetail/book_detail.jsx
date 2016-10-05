@@ -16,7 +16,6 @@ function BookDetail(props) {
 
 function mapStateToProp(state) {
   return {
-    // TODO: Investigate why
     activeBook: state.activeBook,
   };
 }

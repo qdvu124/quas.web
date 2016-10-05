@@ -33,7 +33,7 @@ class BookForm extends React.Component {
 
   render() {
     if (!this.props.isAuthenticated)
-      alert('Log in first lah aiyo!');
+      return <div> Log in first lah aiyo! </div>;
     return (
       <div className="col-md-12">
         <form className="form-control">
@@ -77,7 +77,7 @@ function mapStateToProps({ isAuthenticated }) {
 }
 
 BookForm.propTypes = {
-  isAuthenticated: React.PropTypes.boolean,
+  isAuthenticated: React.PropTypes.bool,
 };
 
 export default connect(mapStateToProps)(BookForm);
