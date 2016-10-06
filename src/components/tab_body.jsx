@@ -6,6 +6,8 @@ import LoginForm from '../containers/LoginForm/login_form';
 import BookDetail from '../containers/BookDetail/book_detail';
 
 export default class TabBody extends React.Component {
+
+
   renderList() {
     return (
       <div className="col-md-12">
@@ -31,7 +33,7 @@ export default class TabBody extends React.Component {
     return (
       <div className="col-md-6">
         <br />
-        <LoginForm />
+        <LoginForm showModal={ this.props.showModal } onCloseModal={ this.props.onCloseModal } />
       </div>
     );
   }
@@ -48,4 +50,5 @@ export default class TabBody extends React.Component {
 
 TabBody.propTypes = {
   currentTab: React.PropTypes.string,
+  showModal: React.PropTypes.bool,
 };

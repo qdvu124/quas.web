@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Modal } from 'react-bootstrap';
 import { dispatchLogin, dispatchLogout } from '../../actions/index';
 
 class LoginForm extends React.Component {
@@ -18,6 +19,7 @@ class LoginForm extends React.Component {
 
   handleLogin(event) {
     event.preventDefault();
+    this.props.onCloseModal();
     this.props.dispatchLogin(this.state.name, this.state.password);
     this.setState({
       name: '',
@@ -33,20 +35,32 @@ class LoginForm extends React.Component {
   render() {
     if (this.props.isAuthenticated)
       return (
-        <div>
-          <button type="submit" className="btn btn-secondary" onClick={ this.handleLogout }> Logout </button>
-        </div>
+        <Modal show={ this.props.showModal } onHide={ this.props.onCloseModal }>
+          <Modal.Header closeButton>
+            <Modal.Title> Logout </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <button type="submit" className="btn btn-secondary" onClick={ this.handleLogout }> Logout </button>
+          </Modal.Body>
+        </Modal>
       );
     return (
-      <form>
-        <input placeholder="Enter your username" className="form-control" onChange={ event => this.setState({ name: event.target.value }) } />
-        <br />
-        <input placeholder="Enter your password" className="form-control" onChange={ event => this.setState({ password: event.target.value }) } />
-        <br />
-        <button className="btn btn-primary" onClick={ this.handleLogin }> Login </button>
-        <div> { this.state.name } </div>
-        <div> { this.state.password } </div>
-      </form>
+      <Modal show={ this.props.showModal } onHide={ this.props.onCloseModal }>
+        <Modal.Header closeButton>
+          <Modal.Title> Login </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form>
+            <input placeholder="Enter your username" className="form-control" onChange={ event => this.setState({ name: event.target.value }) } />
+            <br />
+            <input placeholder="Enter your password" className="form-control" onChange={ event => this.setState({ password: event.target.value }) } />
+            <br />
+            <button className="btn btn-primary" onClick={ this.handleLogin }> Login </button>
+            <div> { this.state.name } </div>
+            <div> { this.state.password } </div>
+          </form>
+        </Modal.Body>
+      </Modal>
     );
   }
 }
