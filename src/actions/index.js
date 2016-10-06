@@ -22,7 +22,8 @@ function login() {
   };
 }
 
-function logout() {
+export function dispatchLogout() {
+  alert('Peace out!');
   return {
     type: LOG_OUT,
   };
@@ -55,11 +56,13 @@ export function dispatchLogin(name, password) {
       }),
     }).then((response) => {
       if (response.status >= 400) {
+        alert('Authentication error!');
         throw new Error('Bad response from server');
       }
       return response.json();
-    }).then((result) => {
-      console.log(result);
+    }).then(() => {
+      alert('Login successful!');
+      dispatch(login());
     });
   };
 }

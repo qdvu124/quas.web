@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { dispatchLogin } from '../../actions/index';
+import { dispatchLogin, dispatchLogout } from '../../actions/index';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -11,17 +11,27 @@ class LoginForm extends React.Component {
       name: '',
       password: '',
     };
-    
+
     this.handleLogin = this.handleLogin.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   handleLogin(event) {
     event.preventDefault();
     this.props.dispatchLogin(this.state.name, this.state.password);
+    this.setState({
+      name: '',
+      password: '',
+    });
+  }
+
+  handleLogout(event) {
+    event.preventDefault();
+    this.props.dispatchLogout();
   }
 
   render() {
-    if(localStorage.getItem('authToken'))
+    if (this.props.isAuthenticated)
       return (
         <div>
           <button type="submit" className="btn btn-secondary" onClick={ this.handleLogout }> Logout </button>
@@ -48,11 +58,13 @@ function mapStateToProps({ isAuthenticated }) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ dispatchLogin }, dispatch);
+  return bindActionCreators({ dispatchLogin, dispatchLogout }, dispatch);
 }
 
 LoginForm.propTypes = {
   dispatchLogin: React.PropTypes.func,
-}
+  dispatchLogout: React.PropTypes.func,
+  isAuthenticated: React.PropTypes.bool,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
