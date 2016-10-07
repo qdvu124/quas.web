@@ -23,9 +23,9 @@ export default class App extends React.Component {
     return (
       <div>
         <div className="col-md-12">
-          <button onClick={ () => this.setState({ currentTab: 'list', showModal: false }) }>Search for books</button>
-          <button onClick={ () => this.setState({ currentTab: 'post', showModal: false }) }>Post new books</button>
-          <button onClick={ () => this.setState({ currentTab: 'login', showModal: true }) }>Authentication</button>
+          <button className="btn btn-secondary" onClick={ () => this.setState({ currentTab: 'list', showModal: false }) }>Search for books</button>
+          <button className="btn btn-secondary" onClick={ () => this.setState({ currentTab: 'post', showModal: false }) }>Post new books</button>
+          <button className="btn btn-secondary" onClick={ () => this.setState({ currentTab: 'login', showModal: true }) }>Authentication</button>
         </div>
         <br />
         <TabBody className="col-md-12" currentTab={ this.state.currentTab } showModal={ this.state.showModal } onCloseModal={ this.onCloseModal } />

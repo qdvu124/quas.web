@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 
 function BookDetail(props) {
   if (!props.activeBook) {
-    return <div> Press the fetch button to begin </div>;
+    return <div className="col-md-6"> Press the fetch button to begin </div>;
   }
   return (
-    <div>
+    <div className="col-md-6">
       <div>Book title: {props.activeBook.name}</div>
       <div>Edition: {props.activeBook.edition}</div>
       <div>Author: {props.activeBook.author}</div>

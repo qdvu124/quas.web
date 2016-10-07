@@ -22,7 +22,7 @@ class BookList extends React.Component {
 
   render() {
     return (
-      <ul className="col-md-12"> { this.props.books ? this.renderList() : 'Now loading'} </ul>
+      <ul className="col-md-6 pre-scrollable"> { this.props.books ? this.renderList() : 'Now loading'} </ul>
     );
   }
 }
