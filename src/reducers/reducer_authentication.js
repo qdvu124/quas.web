@@ -1,6 +1,12 @@
 import { LOG_IN, LOG_OUT } from '../constants/ActionTypes';
 
-export default function (state = false, action) {
+function defaultState() {
+  return (localStorage.getItem('token') != null);
+}
+
+console.log(localStorage.getItem('token'));
+
+export default function (state = defaultState(), action) {
   switch (action.type) {
     case LOG_IN:
       return true;

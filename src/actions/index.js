@@ -24,6 +24,7 @@ function login() {
 
 export function dispatchLogout() {
   alert('Peace out!');
+  localStorage.removeItem('token');
   return {
     type: LOG_OUT,
   };
@@ -60,8 +61,9 @@ export function dispatchLogin(name, password) {
         throw new Error('Bad response from server');
       }
       return response.json();
-    }).then(() => {
-      alert('Login successful!');
+    }).then((result) => {
+      console.log(result);
+      localStorage.setItem('token', result.token);
       dispatch(login());
     });
   };
