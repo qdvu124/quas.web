@@ -7,7 +7,7 @@ export default class App extends React.Component {
 
     this.state = {
       currentTab: 'list',
-      showModal: false,
+      showModal: true,
     };
 
     this.onCloseModal = this.onCloseModal.bind(this);

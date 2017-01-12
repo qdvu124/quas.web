@@ -33,7 +33,7 @@ class LoginForm extends React.Component {
   }
 
   render() {
-    if (this.props.isAuthenticated)
+    if (this.props.isAuthenticated) {
       return (
         <Modal show={ this.props.showModal } onHide={ this.props.onCloseModal }>
           <Modal.Header closeButton>
@@ -44,9 +44,10 @@ class LoginForm extends React.Component {
           </Modal.Body>
         </Modal>
       );
+    }
     return (
-      <Modal show={ this.props.showModal } onHide={ this.props.onCloseModal }>
-        <Modal.Header closeButton>
+      <Modal show={ this.props.showModal } onHide={ this.props.onCloseModal } animation={ false } >
+        <Modal.Header closeButton> 
           <Modal.Title> Login </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -79,6 +80,8 @@ LoginForm.propTypes = {
   dispatchLogin: React.PropTypes.func,
   dispatchLogout: React.PropTypes.func,
   isAuthenticated: React.PropTypes.bool,
+  onCloseModal: React.PropTypes.func,
+  showModal: React.PropTypes.bool,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
