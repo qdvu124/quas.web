@@ -47,7 +47,7 @@ class LoginForm extends React.Component {
     }
     return (
       <Modal show={ this.props.showModal } onHide={ this.props.onCloseModal } animation={ false } >
-        <Modal.Header closeButton> 
+        <Modal.Header closeButton>
           <Modal.Title> Login </Modal.Title>
         </Modal.Header>
         <Modal.Body>
