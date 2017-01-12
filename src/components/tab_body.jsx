@@ -50,4 +50,5 @@ export default class TabBody extends React.Component {
 TabBody.propTypes = {
   currentTab: React.PropTypes.string,
   showModal: React.PropTypes.bool,
+  onCloseModal: React.PropTypes.func,
 };
