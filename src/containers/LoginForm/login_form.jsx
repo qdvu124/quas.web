@@ -35,7 +35,7 @@ class LoginForm extends React.Component {
   render() {
     if (this.props.isAuthenticated) {
       return (
-        <Modal show={ this.props.showModal } onHide={ this.props.onCloseModal }>
+        <Modal show={ this.props.showModal } onHide={ this.props.onCloseModal } animation={ false }>
           <Modal.Header closeButton>
             <Modal.Title> Logout </Modal.Title>
           </Modal.Header>
