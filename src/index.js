@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 import ReactDOM from 'react-dom';
 import rootReducer from './reducers/index';
 
-import App from './components/app';
+import App from './containers/Main/app';
 
 const enhancer = compose(
   applyMiddleware(thunk),
