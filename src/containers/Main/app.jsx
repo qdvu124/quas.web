@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import TabBody from './tab_body';
+import LoginForm from '../LoginForm/login_form';
 import { dispatchLogout } from '../../actions/index';
 
 class App extends React.Component {
@@ -10,17 +11,10 @@ class App extends React.Component {
 
     this.state = {
       currentTab: 'list',
-      showModal: true,
+      showModal: false,
     };
 
-    this.onCloseModal = this.onCloseModal.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
-  }
-
-  onCloseModal() {
-    this.setState({
-      showModal: false,
-    });
   }
 
   handleAuthentication(event) {
@@ -28,7 +22,7 @@ class App extends React.Component {
     if (this.props.isAuthenticated) {
       this.props.dispatchLogout();
     } else {
-      this.setState({ currentTab: 'login', showModal: true });
+      this.setState({ showModal: true });
     }
   }
 
@@ -36,12 +30,16 @@ class App extends React.Component {
     return (
       <div>
         <div className="col-md-12">
-          <button className="btn btn-secondary" onClick={ () => this.setState({ currentTab: 'list', showModal: false }) }>Search for books</button>
-          <button className="btn btn-secondary" onClick={ () => this.setState({ currentTab: 'post', showModal: false }) }>Post new books</button>
-          <button className="btn btn-secondary" onClick={ this.handleAuthentication }>{this.props.isAuthenticated ? 'Logout' : 'Login'}</button>
+          <button className="btn btn-secondary" onClick={ () => this.setState({ currentTab: 'list' }) }>Search for books</button>
+          <button className="btn btn-secondary" onClick={ () => this.setState({ currentTab: 'post' }) }>Post new books</button>
+          <button className="btn btn-secondary" onClick={ this.handleAuthentication }>{ this.props.isAuthenticated ? 'Logout' : 'Login' }</button>
         </div>
         <br />
-        <TabBody className="col-md-12" currentTab={ this.state.currentTab } showModal={ this.state.showModal } onCloseModal={ this.onCloseModal } />
+        <TabBody className="col-md-12" currentTab={ this.state.currentTab } />
+        <div className="col-md-6">
+          <br />
+          <LoginForm showModal={ this.state.showModal } onCloseModal={ () => this.setState({ showModal: false }) } />
+        </div>
       </div>
    );
   }

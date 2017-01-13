@@ -44,18 +44,6 @@ class LoginForm extends React.Component {
   }
 
   render() {
-    if (this.props.isAuthenticated) {
-      return (
-        <Modal show={ this.props.showModal } onHide={ this.props.onCloseModal } animation={ false }>
-          <Modal.Header closeButton>
-            <Modal.Title style={ modalStyle }> Logout </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <button type="submit" className="btn btn-secondary" onClick={ this.handleLogout }> Logout </button>
-          </Modal.Body>
-        </Modal>
-      );
-    }
     return (
       <Modal show={ this.props.showModal } onHide={ this.props.onCloseModal } animation={ false } >
         <Modal.Header closeButton>
@@ -90,7 +78,6 @@ function mapDispatchToProps(dispatch) {
 LoginForm.propTypes = {
   dispatchLogin: React.PropTypes.func,
   dispatchRegister: React.PropTypes.func,
-  isAuthenticated: React.PropTypes.bool,
   onCloseModal: React.PropTypes.func,
   showModal: React.PropTypes.bool,
 };
