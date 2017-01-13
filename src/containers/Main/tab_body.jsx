@@ -4,17 +4,17 @@ import BookForm from '../containers/BookForm/book_form';
 import BookList from '../containers/BookList/book_list';
 import LoginForm from '../containers/LoginForm/login_form';
 import BookDetail from '../containers/BookDetail/book_detail';
+import styles from '../containers/Main/main.css';
 
 export default class TabBody extends React.Component {
-
 
   renderList() {
     return (
       <div className="col-md-12">
         <SearchBar />
         <br />
-          <BookList className="List"/>
-          <BookDetail className="Detail"/>
+          <BookList className={ styles.List } />
+          <BookDetail className={ styles.Detail } />
       </div>
      );
   }
