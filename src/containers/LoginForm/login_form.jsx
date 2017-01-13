@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Modal } from 'react-bootstrap';
-import { dispatchLogin, dispatchLogout, dispatchRegister } from '../../actions/index';
+import { dispatchLogin, dispatchRegister } from '../../actions/index';
 
 const modalStyle = {
   background: "#eee",
@@ -20,7 +20,6 @@ class LoginForm extends React.Component {
     };
 
     this.handleLogin = this.handleLogin.bind(this);
-    this.handleLogout = this.handleLogout.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
   }
 
@@ -42,11 +41,6 @@ class LoginForm extends React.Component {
       name: '',
       password: '',
     });
-  }
-
-  handleLogout(event) {
-    event.preventDefault();
-    this.props.dispatchLogout();
   }
 
   render() {
@@ -90,12 +84,11 @@ function mapStateToProps({ isAuthenticated }) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ dispatchLogin, dispatchLogout, dispatchRegister }, dispatch);
+  return bindActionCreators({ dispatchLogin, dispatchRegister }, dispatch);
 }
 
 LoginForm.propTypes = {
   dispatchLogin: React.PropTypes.func,
-  dispatchLogout: React.PropTypes.func,
   dispatchRegister: React.PropTypes.func,
   isAuthenticated: React.PropTypes.bool,
   onCloseModal: React.PropTypes.func,
