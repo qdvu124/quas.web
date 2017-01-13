@@ -1,6 +1,6 @@
 import { SELECT_BOOK, FETCH_BOOK, LOG_IN, LOG_OUT } from '../constants/ActionTypes';
 import { getHeader } from '../util/rest';
-import { BOOK_API, LOGIN_API } from '../constants/API';
+import { BOOK_API, LOGIN_API, USER_API } from '../constants/API';
 
 export function selectBook(book) {
   return {
@@ -65,6 +65,28 @@ export function dispatchLogin(name, password) {
       console.log(result);
       localStorage.setItem('token', result.token);
       dispatch(login());
+    });
+  };
+}
+
+export function dispatchRegister(name, password) {
+  return (dispatch) => {
+    return fetch(USER_API, {
+      headers: getHeader(),
+      method: 'post',
+      body: JSON.stringify({
+        name,
+        password,
+      }),
+    }).then((response) => {
+      if (response.status >= 400) {
+        alert('Authentication error!');
+        throw new Error('Bad response from server');
+      }
+      return response.json();
+    }).then((result) => {
+      console.log(result);
+      alert('Registered new user!');
     });
   };
 }

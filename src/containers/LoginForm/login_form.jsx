@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Modal } from 'react-bootstrap';
-import { dispatchLogin, dispatchLogout } from '../../actions/index';
+import { dispatchLogin, dispatchLogout, dispatchRegister } from '../../actions/index';
 
 const modalStyle = {
   background: "#eee",
@@ -21,12 +21,23 @@ class LoginForm extends React.Component {
 
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+    this.handleRegister = this.handleRegister.bind(this);
   }
 
   handleLogin(event) {
     event.preventDefault();
     this.props.onCloseModal();
     this.props.dispatchLogin(this.state.name, this.state.password);
+    this.setState({
+      name: '',
+      password: '',
+    });
+  }
+
+  handleRegister(event) {
+    event.preventDefault();
+    this.props.onCloseModal();
+    this.props.dispatchRegister(this.state.name, this.state.password);
     this.setState({
       name: '',
       password: '',
@@ -60,11 +71,10 @@ class LoginForm extends React.Component {
           <form>
             <input placeholder="Enter your username" className="form-control" onChange={ event => this.setState({ name: event.target.value }) } />
             <br />
-            <input placeholder="Enter your password" className="form-control" onChange={ event => this.setState({ password: event.target.value }) } />
+            <input type="password" placeholder="Enter your password" className="form-control" onChange={ event => this.setState({ password: event.target.value }) } />
             <br />
             <button className="btn btn-primary" onClick={ this.handleLogin }> Login </button>
-            <div> { this.state.name } </div>
-            <div> { this.state.password } </div>
+            <button className="btn btn-primary" onClick={ this.handleRegister }> Register </button>
           </form>
         </Modal.Body>
       </Modal>
@@ -81,12 +91,13 @@ function mapStateToProps({ isAuthenticated }) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ dispatchLogin, dispatchLogout }, dispatch);
+  return bindActionCreators({ dispatchLogin, dispatchLogout, dispatchRegister }, dispatch);
 }
 
 LoginForm.propTypes = {
   dispatchLogin: React.PropTypes.func,
   dispatchLogout: React.PropTypes.func,
+  dispatchRegister: React.PropTypes.func,
   isAuthenticated: React.PropTypes.bool,
   onCloseModal: React.PropTypes.func,
   showModal: React.PropTypes.bool,
