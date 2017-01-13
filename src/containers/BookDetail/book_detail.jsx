@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 function BookDetail(props) {
   if (!props.activeBook) {
-    return <div className="col-md-6"> Press the fetch button to begin </div>;
+    return <div className="col-md-6"> Book details will be displayed here </div>;
   }
   return (
     <div className="col-md-6">

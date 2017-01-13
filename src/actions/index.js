@@ -62,7 +62,7 @@ export function dispatchLogin(name, password) {
       }
       return response.json();
     }).then((result) => {
-      console.log(result);
+      alert('Authentication successful!');
       localStorage.setItem('token', result.token);
       dispatch(login());
     });
