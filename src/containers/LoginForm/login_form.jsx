@@ -69,6 +69,7 @@ class LoginForm extends React.Component {
         </Modal.Header>
         <Modal.Body>
           <form>
+            <span className="fa fa-spinner fa-spin" />
             <input placeholder="Enter your username" className="form-control" onChange={ event => this.setState({ name: event.target.value }) } />
             <br />
             <input type="password" placeholder="Enter your password" className="form-control" onChange={ event => this.setState({ password: event.target.value }) } />
