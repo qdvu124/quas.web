@@ -59,10 +59,6 @@ class BookForm extends React.Component {
             className="form-control"
             onChange={ event => this.setState({ publisher: event.target.value }) }
           /> <br />
-          <div>{this.state.name} </div>
-          <div>{this.state.edition} </div>
-          <div>{this.state.author} </div>
-          <div>{this.state.publisher} </div>
           <button type="button" className="btn btn-primary" onClick={ this.handleButtonClick } > Submit Book </button>
         </form>
       </div>

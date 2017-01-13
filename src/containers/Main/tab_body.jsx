@@ -13,8 +13,8 @@ export default class TabBody extends React.Component {
       <div className="col-md-12">
         <SearchBar />
         <br />
-        <BookDetail className="col-md-6" />
-        <BookList className="col-md-6" />
+          <BookList className="List"/>
+          <BookDetail className="Detail"/>
       </div>
      );
   }
