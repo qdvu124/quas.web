@@ -4,6 +4,12 @@ import { bindActionCreators } from 'redux';
 import { Modal } from 'react-bootstrap';
 import { dispatchLogin, dispatchLogout } from '../../actions/index';
 
+const modalStyle = {
+  background: "#eee",
+  padding: "20px",
+  margin: "20px"
+};
+
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
@@ -37,7 +43,7 @@ class LoginForm extends React.Component {
       return (
         <Modal show={ this.props.showModal } onHide={ this.props.onCloseModal } animation={ false }>
           <Modal.Header closeButton>
-            <Modal.Title> Logout </Modal.Title>
+            <Modal.Title style={ modalStyle }> Logout </Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <button type="submit" className="btn btn-secondary" onClick={ this.handleLogout }> Logout </button>
@@ -48,7 +54,7 @@ class LoginForm extends React.Component {
     return (
       <Modal show={ this.props.showModal } onHide={ this.props.onCloseModal } animation={ false } >
         <Modal.Header closeButton>
-          <Modal.Title> Login </Modal.Title>
+          <Modal.Title style={ modalStyle }> Login </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form>
@@ -65,6 +71,8 @@ class LoginForm extends React.Component {
     );
   }
 }
+
+
 
 function mapStateToProps({ isAuthenticated }) {
   return {
