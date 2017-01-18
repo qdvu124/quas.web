@@ -12,13 +12,8 @@ export default class TabBody extends React.Component {
       <div className="col-md-12">
         <SearchBar />
         <br />
-<<<<<<< HEAD
-          <BookList className={ styles.list } />
-          <BookDetail className={ styles.detail } />
-=======
-        <BookList className="List" />
-        <BookDetail className="Detail" />
->>>>>>> 61388925caed6653fa488ff10f99a5d877d79367
+          <BookList />
+          <BookDetail />
       </div>
      );
   }
