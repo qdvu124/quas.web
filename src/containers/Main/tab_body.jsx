@@ -12,7 +12,7 @@ export default class TabBody extends React.Component {
       <div className="col-md-12">
         <SearchBar />
         <br />
-          <BookList />
+          <BookList className="primary" />
           <BookDetail />
       </div>
      );
@@ -30,9 +30,7 @@ export default class TabBody extends React.Component {
   render() {
     if (this.props.currentTab === 'list')
       return this.renderList();
-    else if (this.props.currentTab === 'post')
-      return this.renderPost();
-    return this.renderLogin();
+     return this.renderPost();
   }
 }
 
