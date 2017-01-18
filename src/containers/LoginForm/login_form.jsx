@@ -15,7 +15,7 @@ class LoginForm extends React.Component {
     super(props);
 
     this.state = {
-      name: '',
+      username: '',
       password: '',
     };
 
@@ -26,9 +26,9 @@ class LoginForm extends React.Component {
   handleLogin(event) {
     event.preventDefault();
     this.props.onCloseModal();
-    this.props.dispatchLogin(this.state.name, this.state.password);
+    this.props.dispatchLogin(this.state.username, this.state.password);
     this.setState({
-      name: '',
+      username: '',
       password: '',
     });
   }
@@ -36,9 +36,9 @@ class LoginForm extends React.Component {
   handleRegister(event) {
     event.preventDefault();
     this.props.onCloseModal();
-    this.props.dispatchRegister(this.state.name, this.state.password);
+    this.props.dispatchRegister(this.state.username, this.state.password);
     this.setState({
-      name: '',
+      username: '',
       password: '',
     });
   }
@@ -52,7 +52,7 @@ class LoginForm extends React.Component {
         <Modal.Body>
           <form>
             <span className="fa fa-spinner fa-spin" />
-            <input placeholder="Enter your username" className="form-control" onChange={ event => this.setState({ name: event.target.value }) } />
+            <input placeholder="Enter your username" className="form-control" onChange={ event => this.setState({ username: event.target.value }) } />
             <br />
             <input type="password" placeholder="Enter your password" className="form-control" onChange={ event => this.setState({ password: event.target.value }) } />
             <br />

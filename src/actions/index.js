@@ -56,9 +56,11 @@ export function dispatchLogin(name, password) {
       }),
     }).then((response) => {
       if (response.status >= 400) {
-        throw new Error('Bad response from server');
+        throw new Error(response.statusText);
       }
       return response.json();
+    }).catch((error) => { 
+      alert(error.message);
     }).then((result) => {
       localStorage.setItem('token', result.token);
       dispatch(login());
@@ -77,9 +79,14 @@ export function dispatchRegister(name, password) {
       }),
     }).then((response) => {
       if (response.status >= 400) {
-        throw new Error('Bad response from server');
+        return response.json().then ((result) => {
+          console.log(result);
+          throw new Error(result.field.password[0]);
+        });
+        return response.json();
       }
-      return response.json();
+    }).catch((error) => {
+      alert(error.message);
     }).then((result) => {
       console.log(result);
     });

@@ -34,7 +34,6 @@ class App extends React.Component {
           <button className="btn btn-secondary" onClick={ () => this.setState({ currentTab: 'post' }) }>Post new books</button>
           <button className="btn btn-secondary" onClick={ this.handleAuthentication }>{ this.props.isAuthenticated ? 'Logout' : 'Login' }</button>
         </div>
-        
         <br />
         <TabBody className="col-md-12" currentTab={ this.state.currentTab } />
         <div className="col-md-6">

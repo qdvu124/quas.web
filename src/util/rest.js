@@ -3,7 +3,8 @@ require('isomorphic-fetch');
 export function getHeader() {
   return {
     'Content-Type': 'application/json',
-    Authorization: '',
+    //TODO: There might be a safer way of doing this...
+    Authorization: localStorage.getItem('token') == null ? '' : localStorage.getItem('token').replace('Bearer ', ''),
   };
 }
 
@@ -16,11 +17,13 @@ export function post(api, postBody) {
   }).then((response) => {
     console.log(response);
     if (response.status >= 400) {
-      throw new Error('Bad response from server');
+      throw new Error(response.statusText);
     }
     return response.json();
+  }).catch((error) => {
+    alert(error.message);
   }).then((message) => {
-    console.log(message.message);
+    alert(message.message);
   });
 }
 
