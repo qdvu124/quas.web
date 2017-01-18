@@ -9,11 +9,11 @@ export default class TabBody extends React.Component {
 
   renderList() {
     return (
-      <div className="col-md-12">
+      <div className='col-md-12'>
         <SearchBar />
         <br />
-          <BookList className="primary" />
-          <BookDetail />
+          <BookList className='primary'/>
+          <BookDetail className='col-xs-6'/>
       </div>
      );
   }
