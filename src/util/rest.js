@@ -4,8 +4,8 @@ export function getHeader() {
   return {
     'Content-Type': 'application/json',
     //TODO: There might be a safer way of doing this...
-    authorization: localStorage.getItem('token') == null ? '' : localStorage.getItem('token').replace('Bearer ', ''),
-    'x-language': '',
+    Authorization: localStorage.getItem('token') == null ? '' : localStorage.getItem('token').replace('Bearer ', ''),
+    'X-Language': '',
   };
 }
 
