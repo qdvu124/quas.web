@@ -54,6 +54,7 @@ class LoginForm extends React.Component {
             <span className="fa fa-spinner fa-spin" />
             <input placeholder="Enter your username" className="form-control" onChange={ event => this.setState({ username: event.target.value }) } />
             <br />
+            <input placeholder={ this.props.errorUsername } />
             <input type="password" placeholder="Enter your password" className="form-control" onChange={ event => this.setState({ password: event.target.value }) } />
             <br />
             <button className="btn btn-primary" onClick={ this.handleLogin }> Login </button>
@@ -65,9 +66,11 @@ class LoginForm extends React.Component {
   }
 }
 
-function mapStateToProps({ isAuthenticated }) {
+function mapStateToProps({ isAuthenticated, errorUsername, errorPassword }) {
   return {
     isAuthenticated,
+    errorUsername,
+    errorPassword,
   };
 }
 
@@ -80,6 +83,8 @@ LoginForm.propTypes = {
   dispatchRegister: React.PropTypes.func,
   onCloseModal: React.PropTypes.func,
   showModal: React.PropTypes.bool,
+  errorPassword: React.PropTypes.string,
+  errorUsername: React.PropTypes.string,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
