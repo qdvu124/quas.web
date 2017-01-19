@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import TabBody from './tab_body';
 import LoginForm from '../LoginForm/login_form';
-import { dispatchLogout } from '../../actions/index';
+import { logout } from '../../actions/auth_actions';
 
 class App extends React.Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class App extends React.Component {
   handleAuthentication(event) {
     event.preventDefault();
     if (this.props.isAuthenticated) {
-      this.props.dispatchLogout();
+      this.props.logout();
     } else {
       this.setState({ showModal: true });
     }
@@ -34,7 +34,6 @@ class App extends React.Component {
           <button className="btn btn-secondary" onClick={ () => this.setState({ currentTab: 'post' }) }>Post new books</button>
           <button className="btn btn-secondary" onClick={ this.handleAuthentication }>{ this.props.isAuthenticated ? 'Logout' : 'Login' }</button>
         </div>
-        
         <br />
         <TabBody className="col-md-12" currentTab={ this.state.currentTab } />
         <div className="col-md-6">
@@ -53,12 +52,12 @@ function mapStateToProps({ isAuthenticated }) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ dispatchLogout }, dispatch);
+  return bindActionCreators({ logout }, dispatch);
 }
 
 App.propTypes = {
   isAuthenticated: React.PropTypes.bool,
-  dispatchLogout: React.PropTypes.func,
+  logout: React.PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

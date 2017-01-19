@@ -1,33 +1,7 @@
-import { SELECT_BOOK, FETCH_BOOK, LOG_IN, LOG_OUT } from '../constants/ActionTypes';
 import { getHeader } from '../util/rest';
+import { selectBook, fetchBook } from './book_actions';
+import { login, logout } from './auth_actions';
 import { BOOK_API, LOGIN_API, USER_API } from '../constants/API';
-
-export function selectBook(book) {
-  return {
-    type: SELECT_BOOK,
-    payload: book,
-  };
-}
-
-function fetchBook(books) {
-  return {
-    type: FETCH_BOOK,
-    payload: books,
-  };
-}
-
-function login() {
-  return {
-    type: LOG_IN,
-  };
-}
-
-export function dispatchLogout() {
-  localStorage.removeItem('token');
-  return {
-    type: LOG_OUT,
-  };
-}
 
 export function retrieveBooks() {
   return (dispatch) => {
@@ -45,43 +19,52 @@ export function retrieveBooks() {
   };
 }
 
-export function dispatchLogin(name, password) {
+export function dispatchLogin(username, password) {
   return (dispatch) => {
     return fetch(LOGIN_API, {
       headers: getHeader(),
       method: 'post',
       body: JSON.stringify({
-        name,
+        username,
         password,
       }),
     }).then((response) => {
       if (response.status >= 400) {
-        throw new Error('Bad response from server');
+        return response.json().then ((result) => {
+          throw new Error(result.message);
+        });
       }
       return response.json();
     }).then((result) => {
       localStorage.setItem('token', result.token);
       dispatch(login());
+    }).catch((error) => { 
+      alert(error.message);
     });
   };
 }
 
-export function dispatchRegister(name, password) {
+export function dispatchRegister(username, password) {
   return (dispatch) => {
     return fetch(USER_API, {
       headers: getHeader(),
       method: 'post',
       body: JSON.stringify({
-        name,
+        username,
         password,
       }),
     }).then((response) => {
       if (response.status >= 400) {
-        throw new Error('Bad response from server');
+        return response.json().then ((result) => {
+          console.log(result);
+          throw new Error(result.message);
+        });
+        return response.json();
       }
-      return response.json();
     }).then((result) => {
       console.log(result);
+    }).catch((error) => {
+      alert(error.message);
     });
   };
 }

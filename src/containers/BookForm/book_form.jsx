@@ -36,7 +36,7 @@ class BookForm extends React.Component {
       return <div> Log in first lah aiyo! </div>;
     return (
       <div className="col-md-12">
-        <form className="form-control">
+        <form>
           Name:
           <input
             className="form-control"
