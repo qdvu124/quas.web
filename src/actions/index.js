@@ -1,6 +1,7 @@
 import { getHeader } from '../util/rest';
 import { selectBook, fetchBook } from './book_actions';
 import { login, logout } from './auth_actions';
+import { changePasswordMessage, changeUsernameMessage } from './auth_error_action';
 import { BOOK_API, LOGIN_API, USER_API } from '../constants/API';
 
 export function retrieveBooks() {
@@ -57,6 +58,11 @@ export function dispatchRegister(username, password) {
       if (response.status >= 400) {
         return response.json().then ((result) => {
           console.log(result);
+          if (result.field != null) {
+            for(var key in result.field) {
+              alert(key);
+            }
+          }
           throw new Error(result.message);
         });
         return response.json();
