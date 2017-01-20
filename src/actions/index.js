@@ -60,7 +60,7 @@ export function dispatchRegister(username, password) {
           console.log(result);
           if (result.field != null) {
             for(var key in result.field) {
-              alert(key);
+              alert(result.field[key][0]);
             }
           }
           throw new Error(result.message);
