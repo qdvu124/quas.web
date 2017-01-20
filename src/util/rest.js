@@ -4,14 +4,15 @@ export function getHeader() {
   return {
     'Content-Type': 'application/json',
     //TODO: There might be a safer way of doing this...
-    authorization: localStorage.getItem('token') == null ? '' : localStorage.getItem('token').replace('Bearer ', ''),
+    Authorization: (localStorage.getItem('token') == null ? '' : localStorage.getItem('token').replace('Bearer ', '')),
+    'X-Language': 'en',
   };
 }
 
 export function post(api, postBody) {
   console.log(getHeader());
   return fetch(api, {
-    headers: getHeader(),
+    headers: (getHeader()),
     method: 'post',
     body: JSON.stringify(postBody),
   }).then((response) => {
@@ -29,7 +30,7 @@ export function post(api, postBody) {
 
 export function get(api) {
   return fetch(api, {
-    headers: getHeader(),
+    headers: (getHeader()),
     method: 'get',
   }).then((response) => {
     if (response.status >= 400) {
