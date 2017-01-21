@@ -1,7 +1,7 @@
 import { getHeader } from '../util/rest';
 import { selectBook, fetchBook } from './book_actions';
 import { login, logout } from './auth_actions';
-import { changePasswordMessage, changeUsernameMessage } from './auth_error_action';
+import { changeErrorMessage, resetErrorMessage } from './auth_error_action';
 import { BOOK_API, LOGIN_API, USER_API } from '../constants/API';
 
 export function retrieveBooks() {
@@ -60,7 +60,7 @@ export function dispatchRegister(username, password) {
           console.log(result);
           if (result.field != null) {
             for(var key in result.field) {
-              alert(result.field[key][0]);
+              dispatch(changeErrorMessage(key, result.field[key][0])), 200;
             }
           }
           throw new Error(result.message);
@@ -70,7 +70,7 @@ export function dispatchRegister(username, password) {
     }).then((result) => {
       console.log(result);
     }).catch((error) => {
-      alert(error.message);
+      //Handle errors
     });
   };
 }

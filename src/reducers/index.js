@@ -8,8 +8,7 @@ const rootReducer = combineReducers({
   isAuthenticated: AuthenticationReducer,
   books: BookReducer,
   activeBook: ActiveBookReducer,
-  errorUsername: ErrorReducer,
-  errorPassword: ErrorReducer,
+  errors: ErrorReducer,
 });
 
 export default rootReducer;

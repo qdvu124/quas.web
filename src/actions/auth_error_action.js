@@ -1,15 +1,22 @@
-import { ERROR_PASSWORD, ERROR_USERNAME } from '../constants/ActionTypes';
+import { ERROR_PASSWORD, ERROR_USERNAME, RESET_ERROR } from '../constants/ActionTypes';
 
-export function changeUsernameMessage(payload) {
-    return {
-        type: ERROR_USERNAME,
-        payload,
+export function changeErrorMessage(error, payload) {
+    switch(error) {
+        case 'username':
+            return {
+                type: ERROR_USERNAME,
+                payload,
+            }
+        case 'password':
+            return {
+                type: ERROR_PASSWORD,
+                payload,
+            }
     }
 }
 
-export function changePasswordMessage(payload) {
+export function resetErrorMessages() {
     return {
-        type: ERROR_PASSWORD,
-        payload,
-    }
+        type: RESET_ERROR,
+    };
 }
