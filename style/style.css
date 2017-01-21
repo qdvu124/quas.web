@@ -8,6 +8,11 @@
     text-align: center;
 }
 
+.error {
+    color: red;
+    font-style: italic;
+}
+
 .search-bar input {
     width: 75%;
 }

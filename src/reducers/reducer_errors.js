@@ -1,17 +1,24 @@
-import { ERROR_USERNAME, ERROR_PASSWORD } from '../constants/ActionTypes';
+import { ERROR_USERNAME, ERROR_PASSWORD, RESET_ERROR } from '../constants/ActionTypes';
 
-export default function (state = {}, action) {
+const initialState = {
+    errorUsername: '',
+    errorPassword: '',
+}
+
+export default function (state = initialState, action) {
     switch (action.type) {
         case ERROR_USERNAME:
             return {
+                ...state,
                 errorUsername: action.payload,
-                errorPassword,
-            }
+            };
         case ERROR_PASSWORD:
-            return {
-                errorUsername,
+             return {
+                ...state,
                 errorPassword: action.payload,
-            }
+            };
+        case RESET_ERROR:
+            return initialState;
         default:
             return state;
     }
