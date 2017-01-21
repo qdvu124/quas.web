@@ -2,10 +2,10 @@ require('isomorphic-fetch');
 
 export function getHeader() {
   return {
-    'Content-Type': 'application/json',
-    //TODO: There might be a safer way of doing this...
-    Authorization: (localStorage.getItem('token') == null ? '' : localStorage.getItem('token').replace('Bearer ', '')),
-    'X-Language': 'en',
+    //React enforce lowercase for headers: https://github.com/facebook/react-native/commit/7069e4cd3f1228e0508988ecdee2afb3899aedfc
+    'content-type': 'application/json',
+    authorization: (localStorage.getItem('token') == null ? '' : localStorage.getItem('token').replace('Bearer ', '')),
+    'x-language': 'en',
   };
 }
 
