@@ -33,7 +33,7 @@ class BookForm extends React.Component {
 
   render() {
     if (!this.props.isAuthenticated)
-      return <div> Log in first lah aiyo! </div>;
+      return <div> Authentication is required for posting new book </div>;
     return (
       <div className="col-md-12">
         <form>

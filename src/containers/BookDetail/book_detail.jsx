@@ -14,9 +14,9 @@ function BookDetail(props) {
     </div>);
 }
 
-function mapStateToProp(state) {
+function mapStateToProp({ activeBook }) {
   return {
-    activeBook: state.activeBook,
+    activeBook,
   };
 }
 

@@ -4,8 +4,6 @@ function defaultState() {
   return (localStorage.getItem('token') != null);
 }
 
-console.log(localStorage.getItem('token'));
-
 export default function (state = defaultState(), action) {
   switch (action.type) {
     case LOG_IN:

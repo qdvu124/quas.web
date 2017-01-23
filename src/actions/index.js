@@ -1,7 +1,7 @@
 import { getHeader } from '../util/rest';
-import { selectBook, fetchBook } from './book_actions';
-import { login, logout } from './auth_actions';
-import { changeErrorMessage, resetErrorMessage } from './auth_error_action';
+import { fetchBook } from './book_actions';
+import { login } from './auth_actions';
+import { changeErrorMessage } from './auth_error_action';
 import { BOOK_API, LOGIN_API, USER_API } from '../constants/API';
 
 export function retrieveBooks() {
@@ -31,7 +31,13 @@ export function dispatchLogin(username, password) {
       }),
     }).then((response) => {
       if (response.status >= 400) {
-        return response.json().then ((result) => {
+        return response.json().then((result) => {
+          let key;
+          if (result.field != null) {
+            for (key in result.field) {
+              dispatch(changeErrorMessage(key, result.field[key][0]));
+            }
+          }
           throw new Error(result.message);
         });
       }
@@ -39,8 +45,9 @@ export function dispatchLogin(username, password) {
     }).then((result) => {
       localStorage.setItem('token', result.token);
       dispatch(login());
-    }).catch((error) => { 
-      alert(error.message);
+    }).catch((error) => {
+      // Handle errors here
+      console.log(error);
     });
   };
 }
@@ -56,21 +63,22 @@ export function dispatchRegister(username, password) {
       }),
     }).then((response) => {
       if (response.status >= 400) {
-        return response.json().then ((result) => {
-          console.log(result);
+        return response.json().then((result) => {
+          let key;
           if (result.field != null) {
-            for(var key in result.field) {
-              dispatch(changeErrorMessage(key, result.field[key][0])), 200;
+            for (key in result.field) {
+              dispatch(changeErrorMessage(key, result.field[key][0]));
             }
           }
           throw new Error(result.message);
         });
-        return response.json();
       }
+      return response.json();
     }).then((result) => {
       console.log(result);
     }).catch((error) => {
-      //Handle errors
+      // Handle errors
+      console.log(error);
     });
   };
 }

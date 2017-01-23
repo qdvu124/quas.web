@@ -5,12 +5,6 @@ import { Modal } from 'react-bootstrap';
 import { dispatchLogin, dispatchRegister } from '../../actions/index';
 import { resetErrorMessages } from '../../actions/auth_error_action';
 
-const modalStyle = {
-  background: "#eee",
-  padding: "20px",
-  margin: "20px"
-};
-
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
@@ -26,6 +20,7 @@ class LoginForm extends React.Component {
 
   handleLogin(event) {
     event.preventDefault();
+    this.props.resetErrorMessages();
     this.props.dispatchLogin(this.state.username, this.state.password);
     this.setState({
       username: '',
@@ -47,7 +42,7 @@ class LoginForm extends React.Component {
     return (
       <Modal show={ this.props.showModal } onHide={ this.props.onCloseModal } animation={ false } >
         <Modal.Header closeButton>
-          <Modal.Title style={ modalStyle }> Login </Modal.Title>
+          <Modal.Title> Login </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form>
@@ -67,9 +62,8 @@ class LoginForm extends React.Component {
   }
 }
 
-function mapStateToProps({ isAuthenticated, errors}) {
+function mapStateToProps({ errors }) {
   return {
-    isAuthenticated,
     errors,
   };
 }

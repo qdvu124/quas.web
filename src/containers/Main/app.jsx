@@ -38,10 +38,13 @@ class App extends React.Component {
         <TabBody className="col-md-12" currentTab={ this.state.currentTab } />
         <div className="col-md-6">
           <br />
-          <LoginForm showModal={ this.state.showModal } onCloseModal={ () => this.setState({ showModal: false }) } />
+          <LoginForm
+            showModal={ this.state.showModal }
+            onCloseModal={ () => this.setState({ showModal: false }) } 
+          />
         </div>
       </div>
-   );
+    );
   }
 }
 

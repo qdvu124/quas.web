@@ -2,7 +2,7 @@ require('isomorphic-fetch');
 
 export function getHeader() {
   return {
-    //React enforce lowercase for headers: https://github.com/facebook/react-native/commit/7069e4cd3f1228e0508988ecdee2afb3899aedfc
+    // React enforce lowercase for headers: https://github.com/facebook/react-native/commit/7069e4cd3f1228e0508988ecdee2afb3899aedfc
     'content-type': 'application/json',
     authorization: (localStorage.getItem('token') == null ? '' : localStorage.getItem('token').replace('Bearer ', '')),
     'x-language': 'en',
@@ -10,13 +10,11 @@ export function getHeader() {
 }
 
 export function post(api, postBody) {
-  console.log(getHeader());
   return fetch(api, {
     headers: (getHeader()),
     method: 'post',
     body: JSON.stringify(postBody),
   }).then((response) => {
-    console.log(response);
     if (response.status >= 400) {
       throw new Error(response.statusText);
     }
