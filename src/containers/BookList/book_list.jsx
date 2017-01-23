@@ -27,9 +27,9 @@ class BookList extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps({ books }) {
   return {
-    books: state.books,
+    books,
   };
 }
 
