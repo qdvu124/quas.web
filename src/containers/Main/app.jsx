@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import TabBody from './tab_body';
 import LoginForm from '../LoginForm/login_form';
 import { logout } from '../../actions/auth_actions';
+import { openModal, closeModal } from '../../actions/modal_actions';
 
 class App extends React.Component {
   constructor(props) {
@@ -11,10 +12,10 @@ class App extends React.Component {
 
     this.state = {
       currentTab: 'list',
-      showModal: false,
     };
 
     this.handleAuthentication = this.handleAuthentication.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
   handleAuthentication(event) {
@@ -22,8 +23,12 @@ class App extends React.Component {
     if (this.props.isAuthenticated) {
       this.props.logout();
     } else {
-      this.setState({ showModal: true });
+      this.props.openModal();
     }
+  }
+
+  handleCloseModal() {
+    this.props.closeModal();
   }
 
   render() {
@@ -39,8 +44,8 @@ class App extends React.Component {
         <div className="col-md-6">
           <br />
           <LoginForm
-            showModal={ this.state.showModal }
-            onCloseModal={ () => this.setState({ showModal: false }) } 
+            showModal={ this.props.showModal }
+            onCloseModal={ this.handleCloseModal }
           />
         </div>
       </div>
@@ -48,19 +53,23 @@ class App extends React.Component {
   }
 }
 
-function mapStateToProps({ isAuthenticated }) {
+function mapStateToProps({ isAuthenticated, showModal }) {
   return {
     isAuthenticated,
+    showModal,
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ logout }, dispatch);
+  return bindActionCreators({ logout, openModal, closeModal }, dispatch);
 }
 
 App.propTypes = {
   isAuthenticated: React.PropTypes.bool,
+  showModal: React.PropTypes.bool,
   logout: React.PropTypes.func,
+  openModal: React.PropTypes.func,
+  closeModal: React.PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

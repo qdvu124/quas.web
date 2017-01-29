@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { Modal } from 'react-bootstrap';
 import { dispatchLogin, dispatchRegister } from '../../actions/index';
 import { resetErrorMessages } from '../../actions/auth_error_action';
+import { closeModal } from '../../actions/modal_actions';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -62,9 +63,10 @@ class LoginForm extends React.Component {
   }
 }
 
-function mapStateToProps({ errors }) {
+function mapStateToProps({ errors, showModal }) {
   return {
     errors,
+    showModal,
   };
 }
 

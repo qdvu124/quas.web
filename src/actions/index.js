@@ -1,6 +1,7 @@
 import { getHeader } from '../util/rest';
 import { fetchBook } from './book_actions';
 import { login } from './auth_actions';
+import { showModal, closeModal } from './modal_actions';
 import { changeErrorMessage } from './auth_error_action';
 import { BOOK_API, LOGIN_API, USER_API } from '../constants/API';
 
@@ -47,9 +48,10 @@ export function dispatchLogin(username, password) {
     }).then((result) => {
       localStorage.setItem('token', result.token);
       dispatch(login());
+      dispatch(closeModal());
     }).catch((error) => {
       // Handle errors here
-      console.log(error);
+      alert(error.message);
     });
   };
 }
@@ -77,6 +79,7 @@ export function dispatchRegister(username, password) {
       }
       return response.json();
     }).then((result) => {
+      dispatch(closeModal());
       console.log(result);
     }).catch((error) => {
       // Handle errors
