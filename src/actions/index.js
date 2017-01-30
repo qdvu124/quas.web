@@ -11,11 +11,13 @@ export function retrieveBooks() {
       method: 'get',
     }).then((response) => {
       if (response.status >= 400) {
-        throw new Error('Bad response from server');
+        throw new Error(response.statusText);
       }
       return response.json();
     }).then((result) => {
       dispatch(fetchBook(result));
+    }).catch((error) => {
+      console.log(error);
     });
   };
 }

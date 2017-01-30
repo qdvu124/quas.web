@@ -35,6 +35,15 @@
     clear: both;
 }
 
-.primary {
-  background-color: red;
+.book-detail {
+  color: maroon;
+  font-style: bold;
+}
+
+.right {
+  text-align: right;
+}
+
+a:hover {
+  cursor: pointer;
 }

@@ -54,7 +54,7 @@ class LoginForm extends React.Component {
             <div className="error"> { this.props.errors.errorPassword } </div>
             <br />
             <button className="btn btn-primary" onClick={ this.handleLogin }> Login </button>
-            <button className="btn btn-primary" onClick={ this.handleRegister }> Register </button>
+            <a onClick={ this.handleRegister }> Click here to register! </a> 
           </form>
         </Modal.Body>
       </Modal>
