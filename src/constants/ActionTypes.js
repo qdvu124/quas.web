@@ -5,3 +5,5 @@ export const LOG_OUT = 'LOG_OUT';
 export const ERROR_USERNAME = 'ERROR_USERNAME';
 export const ERROR_PASSWORD = 'ERROR_PASSWORD';
 export const RESET_ERROR = 'RESET_ERROR';
+export const SHOW_MODAL = 'SHOW_MODAL';
+export const HIDE_MODAL = 'HIDE_MODAL';

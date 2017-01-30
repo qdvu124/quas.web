@@ -42,23 +42,28 @@ class BookForm extends React.Component {
             className="form-control"
             onChange={ event => this.setState({ name: event.target.value }) }
           />
+          <div className="error"> { this.props.errors.errorBookname } </div>
           <br />
           Edition:
           <input
             className="form-control"
             onChange={ event => this.setState({ edition: event.target.value }) }
           />
+          <div className="error"> { this.props.errors.errorEdition } </div>
           <br />
           Author:
           <input
             className="form-control"
             onChange={ event => this.setState({ author: event.target.value }) }
           />
+          <div classname="error"> { this.props.errors.errorAuthor } </div>
           <br />
           Publisher: <input
             className="form-control"
             onChange={ event => this.setState({ publisher: event.target.value }) }
-          /> <br />
+          />
+          <div classname="error"> { this.props.errors.errorPublisher} </div>
+          <br />
           <button type="button" className="btn btn-primary" onClick={ this.handleButtonClick } > Submit Book </button>
         </form>
       </div>
@@ -66,13 +71,15 @@ class BookForm extends React.Component {
   }
 }
 
-function mapStateToProps({ isAuthenticated }) {
+function mapStateToProps({ errors, isAuthenticated }) {
   return {
+    errors,
     isAuthenticated,
   };
 }
 
 BookForm.propTypes = {
+  errors: React.PropTypes.object,
   isAuthenticated: React.PropTypes.bool,
 };
 

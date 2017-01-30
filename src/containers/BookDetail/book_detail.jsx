@@ -6,7 +6,7 @@ function BookDetail(props) {
     return <div className="col-md-6"> Book details will be displayed here </div>;
   }
   return (
-    <div className="col-md-6">
+    <div className="col-md-6 book-detail">
       <div>Book title: {props.activeBook.name}</div>
       <div>Edition: {props.activeBook.edition}</div>
       <div>Author: {props.activeBook.author}</div>
