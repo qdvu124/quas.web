@@ -13,14 +13,14 @@ module.exports = {
       loader: 'babel',
       query: {
         presets: ['react', 'es2015', 'stage-1']
-      },
-    }],
+      }
+    }]
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
   devServer: {
     historyApiFallback: true,
-    contentBase: './',
-  },
+    contentBase: './'
+  }
 };
