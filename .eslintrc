@@ -1,6 +1,8 @@
 {
   "parser": "babel-eslint",
-  "extends": ["airbnb"],
+  "extends": [
+    "airbnb"
+  ],
   "parserOptions": {
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true,
@@ -10,11 +12,17 @@
     "ecmaVersion": 7,
     "sourceType": "module"
   },
-
-  "plugins": ["import"],
-
+  "plugins": [
+    "import"
+  ],
   "rules": {
-    "import/no-unresolved": [0],
+    "comma-dangle": [
+      1,
+      "never"
+    ],
+    "import/no-unresolved": [
+      0
+    ],
     "import/prefer-default-export": 0,
     "global-require": 0,
     "no-param-reassign": 0,
@@ -22,23 +30,22 @@
     "arrow-body-style": 0,
     "curly": 0,
     "linebreak-style": 0,
-
     "react/forbid-prop-types": 0,
     "react/jsx-filename-extension": 0,
-    "react/jsx-curly-spacing": [ "error", "always" ]
+    "react/jsx-curly-spacing": [
+      "error",
+      "always"
+    ]
   },
-
-  "globals": { 
+  "globals": {
     "fetch": false,
     "document": true,
     "localstorage": true,
     "window": true
   },
-
   "ecmaFeatures": {
     "jsx": true
   },
-
   "env": {
     "browser": true
   }
