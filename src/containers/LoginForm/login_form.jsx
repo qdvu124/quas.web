@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux';
 import { Modal } from 'react-bootstrap';
 import { dispatchLogin, dispatchRegister } from '../../actions/index';
 import { resetErrorMessages } from '../../actions/auth_error_action';
-import { closeModal } from '../../actions/modal_actions';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -55,7 +54,7 @@ class LoginForm extends React.Component {
             <div className="error"> { this.props.errors.errorPassword } </div>
             <br />
             <button className="btn btn-primary" onClick={ this.handleLogin }> Login </button>
-            <a onClick={ this.handleRegister }> Click here to register! </a> 
+            <a onClick={ this.handleRegister }> Click here to register! </a>
           </form>
         </Modal.Body>
       </Modal>

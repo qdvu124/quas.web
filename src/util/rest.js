@@ -39,5 +39,3 @@ export function get(api) {
     console.log(message.message);
   });
 }
-
-

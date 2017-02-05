@@ -1,7 +1,7 @@
 import { getHeader } from '../util/rest';
 import { fetchBook } from './book_actions';
 import { login } from './auth_actions';
-import { showModal, closeModal } from './modal_actions';
+import { closeModal } from './modal_actions';
 import { changeErrorMessage } from './auth_error_action';
 import { BOOK_API, LOGIN_API, USER_API } from '../constants/API';
 

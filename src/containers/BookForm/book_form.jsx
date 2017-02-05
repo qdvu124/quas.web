@@ -56,13 +56,13 @@ class BookForm extends React.Component {
             className="form-control"
             onChange={ event => this.setState({ author: event.target.value }) }
           />
-          <div classname="error"> { this.props.errors.errorAuthor } </div>
+          <div className="error"> { this.props.errors.errorAuthor } </div>
           <br />
           Publisher: <input
             className="form-control"
             onChange={ event => this.setState({ publisher: event.target.value }) }
           />
-          <div classname="error"> { this.props.errors.errorPublisher} </div>
+          <div className="error"> { this.props.errors.errorPublisher} </div>
           <br />
           <button type="button" className="btn btn-primary" onClick={ this.handleButtonClick } > Submit Book </button>
         </form>
